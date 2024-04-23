@@ -58,22 +58,35 @@ body, html {
 
 /* Additional styles for smaller screens */
 @media (max-width: 768px) {
+  /* Additional styles for smaller screens */
   .w3-bar-item {
-    padding: 8px 16px;
+    padding: 8px 12px; /* Adjust padding for smaller screens */
   }
   
-  .w3-top {
-    position: static;
-  }
-
   .container {
-    margin-top: 5%;
+    margin-top: 3%; /* Adjust top margin for smaller screens */
   }
 
   .modal-dialog {
     max-width: 90%;
   }
+
+  /* Adjust table styles for smaller screens */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .table th,
+  .table td {
+    padding: .5rem; /* Adjust cell padding for smaller screens */
+  }
 }
+
 </style>
 </head>
 <body>
@@ -101,8 +114,9 @@ body, html {
 
         <div class="row">
             <div class="col-12">
-                <table class="table table-striped table-hover mt-3 text-center table-bordered">
-
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mt-3 text-center table-bordered">
+                   
                     <thead>
                         <tr>
                             <th>S.No</th>
@@ -127,7 +141,7 @@ body, html {
                 </table>
             </div>
         </div>
-
+    </div>
     </section>
 
     </div>
