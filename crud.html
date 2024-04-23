@@ -37,16 +37,28 @@ body, html {
   max-width: 90%;
 }
 
-/* Table */
-.table th,
-.table td {
-  white-space: nowrap;
-}
+    .table-container {
+        max-height: 300px; /* Set max height for the container */
+        overflow-y: auto; /* Add vertical scrollbar */
+    }
 
-/* Buttons */
-.btn {
-  padding: 10px 20px;
-}
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ddd; /* Add borders */
+    }
+
+    .table th {
+        background-color: #f2f2f2; /* Add background color to header */
+    }
+
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1600px) {
@@ -194,24 +206,26 @@ body, html {
 
                 <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm">New Record <i class="bi bi-people"></i></button>
 <br><br>
-                    <table class="  table-hover text-center table-bordered" style="font-size: large;">
-                         <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Dr Name</th>
-                            <th>Medi ID</th>
-                            <th>Medi Name</th>
-                            <th>Take @</th>
-                            <th>Take @</th>
-                            <th>Taken Date</th>
-                            <th>Taken Time</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                   <!-- Container for the table with scrollbar -->
+                <div class="table-container">
+                    <table class="table table-hover text-center table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Dr Name</th>
+                                <th>Medi ID</th>
+                                <th>Medi Name</th>
+                                <th>Take @</th>
+                                <th>Take @</th>
+                                <th>Taken Date</th>
+                                <th>Taken Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data"></tbody>
+                    </table>
+                </div>
 
-                    <tbody id="data"></tbody>
-
-                </table>
 
 
 <!--Modal Form-->
@@ -219,7 +233,7 @@ body, html {
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
 
-            <div class="modal-header">
+            <div class="modal-header"><br><br>
                 <h4 class="modal-title">Fill the Form</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
