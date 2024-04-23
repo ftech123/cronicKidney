@@ -16,254 +16,172 @@ body, html {
   background-color: azure;
   line-height: 1.8;
 }
-
-/* Navbar */
-.w3-top {
-  position: sticky;
-  top: 0;
-}
-
-.w3-bar-item {
-  padding: 8px 16px;
-}
-
-/* Container */
-.container {
-  margin-top: 5%;
-}
-
-/* Modal Dialog */
-.modal-dialog {
-  max-width: 90%;
-}
-
-/* Table */
-.table th,
-.table td {
-  white-space: nowrap;
-}
-
-/* Buttons */
-.btn {
-  padding: 10px 20px;
-}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-    min-height: 400px;
+label {
+    display: block;
+    margin-bottom: 5px;
   }
-}
-/* Table Styling */
-@media (max-width: 768px) {
-    .table-responsive {
-        overflow-x: auto;
-        display: block;
-        width: 100%;
-    }
-
-    .table th,
-    .table td {
-        font-size: 14px;
-        white-space: nowrap; /* Prevent line breaks in table cells */
-    }
-}
-
-
-
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
 </style>
 </head>
 <body>
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
-    <div class="w3-bar" id="myNavbar" style="background-color: antiquewhite;">
-        <a href="cronic.html" class="w3-bar-item w3-button "> Detect</a>
-        <a href="crud.html" class="w3-bar-item w3-button "> Update Medicine Details</a>
-        <a href="alarm.html" class="w3-bar-item w3-button "> Reminder</a>
-        <a href="index.html" class="w3-bar-item w3-button "> Logout</a>
-      </div>
-</div>
-
+  <div class="w3-bar" id="myNavbar" style="background-color: antiquewhite;">
+    <a href="cronic.html" class="w3-bar-item w3-button "> Detect</a>
+    <a href="crud.html" class="w3-bar-item w3-button "> Update Medicine Details</a>
+    <a href="alarm.html" class="w3-bar-item w3-button "> Reminder</a>
+    <a href="index.html" class="w3-bar-item w3-button "> Logout</a>
+  </div>
+</div><br><br>
 <div class="w3-content w3-container w3-padding-64"> 
 
+  <h2 >Chronic Kidney Disease Prediction</h2>
+  <form id="ckdPredictionForm">
+    <!-- Demographic Factors -->
+    <h3>Demographic Factors</h3>
+    <label for="age">Age:</label>
+    <input type="number" id="age" placeholder="Enter age">
 
-        <div class="row">
-            <div class="col-auto">
-                <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm">New Record <i class="bi bi-people"></i></button>
-            </div>
-        </div>
-                <div style="overflow-x:auto;">
-                    <table class="table table-striped table-hover mt-3 text-center table-bordered">
-                         <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Doctor Name</th>
-                            <th>Medicine ID</th>
-                            <th>Medicine Name</th>
-                            <th>Date Taken</th>
-                            <th>Time Taken</th>
-                            <th>To Be Taken Date</th>
-                            <th>To Be Taken Time</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+    <label for="gender">Gender:</label>
+    <select id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
 
-                    <tbody id="data"></tbody>
+    <!-- Health Factors -->
+    <h3>Health Factors</h3>
+    <label for="blood_pressure">Blood Pressure (mmHg):</label>
+    <input type="number" id="blood_pressure" placeholder="Enter blood pressure">
 
-                </table>
-            </div>
+    <label for="blood_glucose">Blood Glucose Level (mg/dL):</label>
+    <input type="number" id="blood_glucose" placeholder="Enter blood glucose level">
 
+    <label for="albumin">Albumin Level (g/dL):</label>
+    <input type="number" id="albumin" placeholder="Enter albumin level">
+
+    <label for="hemoglobin">Hemoglobin Level (g/dL):</label>
+    <input type="number" id="hemoglobin" placeholder="Enter hemoglobin level">
+
+    <label for="serum_creatinine">Serum Creatinine Level (mg/dL):</label>
+    <input type="number" id="serum_creatinine" placeholder="Enter serum creatinine level">
+
+    <label for="potassium">Potassium Level (mEq/L):</label>
+    <input type="number" id="potassium" placeholder="Enter potassium level">
+
+    <!-- Additional Factors -->
+    <h3>Additional Factors</h3>
+    <label for="smoking">Smoking:</label>
+    <select id="smoking">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label for="alcohol">Alcohol Consumption:</label>
+    <select id="alcohol">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <!-- Button to Predict -->
+    <button type="button" onclick="predictCKD()">Predict CKD</button>
+  </form>
+
+  <div id="predictionResult"></div>
+  <div id="recommendations"></div>
 </div>
+  <script>
+    function predictCKD() {
+      // Retrieve input values
+      var age = parseInt(document.getElementById('age').value);
+      var gender = document.getElementById('gender').value;
+      var blood_pressure = document.getElementById('blood_pressure').value;
+      var blood_glucose = parseFloat(document.getElementById('blood_glucose').value);
+      var albumin = parseFloat(document.getElementById('albumin').value);
+      var hemoglobin = parseFloat(document.getElementById('hemoglobin').value);
+      var serum_creatinine = parseFloat(document.getElementById('serum_creatinine').value);
+      var potassium = parseFloat(document.getElementById('potassium').value);
+      var smoking = document.getElementById('smoking').value;
+      var alcohol = document.getElementById('alcohol').value;
 
-<!--Modal Form-->
-<div class="modal fade" id="userForm">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
+      // Perform prediction
+      var prediction;
+      var stage;
+      var recommendations = "";
 
-            <div class="modal-header">
-                <h4 class="modal-title">Fill the Form</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+      // Example prediction logic:
+      // If any of the following criteria are met, predict "Positive", otherwise predict "Negative"
+      if ((age >= 60 && blood_pressure > 140) || blood_glucose >= 200 || albumin < 3.5 || hemoglobin < 12 || serum_creatinine > 1.2 || potassium > 5.0 || smoking === 'yes' || alcohol === 'yes') {
+          prediction = "Positive";
 
-            <div class="modal-body">
+          // Stage determination
+          if (serum_creatinine > 5.0) {
+            stage = "Stage 5";
+            recommendations = "Consult a nephrologist or kidney specialist. Start dialysis or consider kidney transplant.";
+          } else if (serum_creatinine > 3.0) {
+            stage = "Stage 4";
+            recommendations = "Consult a nephrologist or kidney specialist. Consider treatment options to slow kidney damage and plan for possible treatments for kidney failure.";
+          } else if (serum_creatinine > 1.2) {
+            stage = "Stage 3";
+            if (serum_creatinine > 3.5) {
+              stage += "b";
+              recommendations = "Consult a nephrologist or kidney specialist. Manage symptoms and slow the progression of kidney damage.";
+            } else {
+              stage += "a";
+              recommendations = "Consult a nephrologist or kidney specialist. Manage symptoms and slow the progression of kidney damage.";
+            }
+          } else if (serum_creatinine > 0.8) {
+            stage = "Stage 2";
+            recommendations = "Consult a nephrologist or kidney specialist. Make lifestyle changes and manage underlying conditions.";
+          } else {
+            stage = "Stage 1";
+            recommendations = "Consult a nephrologist or kidney specialist. Manage underlying conditions and adopt a healthy lifestyle.";
+          }
+      } else {
+          prediction = "Negative";
+          stage = "N/A"; // Stage is not applicable if prediction is negative
+      }
 
-                <form action="#" id="myForm">
+      // Display prediction result
+      var resultDiv = document.getElementById('predictionResult');
+      resultDiv.innerHTML = "<h3>Prediction Result:</h3><p>User's Chronic Kidney Disease status is predicted as: <strong>" + prediction + "</strong></p><p>Stage: <strong>" + stage + "</strong></p>";
 
-                    <div class="inputField">
-                        <div>
-                            <label for="doctorName">Doctor Name:</label>
-                            <input type="text" name="" id="doctorName" required>
-                        </div>
-                        <div>
-                            <label for="medId">Medicine ID:</label>
-                            <input type="text" name="" id="medId" required>
-                        </div>
-                        <div>
-                            <label for="medName">Medicine Name:</label>
-                            <input type="text" name="" id="medName" required>
-                        </div>
-                        <div>
-                            <label for="dateTaken">Date Taken:</label>
-                            <input type="date" name="" id="dateTaken" required>
-                        </div>
-                        <div>
-                            <label for="timeTaken">Time Taken:</label>
-                            <input type="time" name="" id="timeTaken" required>
-                        </div>
-                        <div>
-                            <label for="toBeTakenDate">To Be Taken Date:</label>
-                            <input type="date" name="" id="toBeTakenDate" required>
-                        </div>
-                        <div>
-                            <label for="toBeTakenTime">To Be Taken Time:</label>
-                            <input type="time" name="" id="toBeTakenTime" required>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-<script>
-    var form = document.getElementById("myForm"),
-        userInfo = document.getElementById("data"),
-        modal = document.getElementById("userForm"),
-        modalTitle = document.querySelector("#userForm .modal-title"),
-        newUserBtn = document.querySelector(".newUser");
-
-    let getData = localStorage.getItem('userProfile') ? JSON.parse(localStorage.getItem('userProfile')) : [];
-
-    let isEdit = false, editId;
-
-    showInfo();
-
-    newUserBtn.addEventListener('click', ()=> {
-        submitBtn.innerText = 'Submit';
-        modalTitle.innerText = "Fill the Form";
-        isEdit = false;
-        form.reset();
-    });
-
-    function showInfo(){
-        userInfo.innerHTML = ""; // Clear existing data
-        getData.forEach((element, index) => {
-            let createElement = `<tr class="medicineDetails">
-                <td>${index+1}</td>
-                <td>${element.doctorName}</td>
-                <td>${element.medId}</td>
-                <td>${element.medName}</td>
-                <td>${element.dateTaken}</td>
-                <td>${element.timeTaken}</td>
-                <td>${element.toBeTakenDate}</td>
-                <td>${element.toBeTakenTime}</td>
-                <td>
-                    <button class="btn btn-primary" onclick="editInfo(${index}, '${element.doctorName}', '${element.medId}', '${element.medName}', '${element.dateTaken}', '${element.timeTaken}', '${element.toBeTakenDate}', '${element.toBeTakenTime}')" data-bs-toggle="modal" data-bs-target="#userForm">Edit</button>
-                    <button class="btn btn-danger" onclick="deleteInfo(${index})">Delete</button>
-                </td>
-            </tr>`;
-            userInfo.innerHTML += createElement;
-        });
+      // Display recommendations if prediction is positive
+      if (prediction === "Positive") {
+        var recommendationsDiv = document.getElementById('recommendations');
+        recommendationsDiv.innerHTML = "<h3>Recommendations:</h3><p>" + recommendations + "</p>";
+      } else {
+        var recommendationsDiv = document.getElementById('recommendations');
+        recommendationsDiv.innerHTML = ""; // Clear recommendations if prediction is negative
+      }
     }
-
-    function editInfo(index, doctorName, medId, medName, dateTaken, timeTaken, toBeTakenDate, toBeTakenTime){
-        isEdit = true;
-        editId = index;
-        document.getElementById("doctorName").value = doctorName;
-        document.getElementById("medId").value = medId;
-        document.getElementById("medName").value = medName;
-        document.getElementById("dateTaken").value = dateTaken;
-        document.getElementById("timeTaken").value = timeTaken;
-        document.getElementById("toBeTakenDate").value = toBeTakenDate;
-        document.getElementById("toBeTakenTime").value = toBeTakenTime;
-        submitBtn.innerText = "Update";
-        modalTitle.innerText = "Update The Form";
-    }
-
-    function deleteInfo(index){
-        if(confirm("Are you sure you want to delete?")){
-            getData.splice(index, 1);
-            localStorage.setItem("userProfile", JSON.stringify(getData));
-            showInfo();
-        }
-    }
-
-    form.addEventListener('submit', (e)=> {
-        e.preventDefault();
-
-        const information = {
-            doctorName: document.getElementById("doctorName").value,
-            medId: document.getElementById("medId").value,
-            medName: document.getElementById("medName").value,
-            dateTaken: document.getElementById("dateTaken").value,
-            timeTaken: document.getElementById("timeTaken").value,
-            toBeTakenDate: document.getElementById("toBeTakenDate").value,
-            toBeTakenTime: document.getElementById("toBeTakenTime").value
-        };
-
-        if(!isEdit){
-            getData.push(information);
-        }
-        else{
-            isEdit = false;
-            getData[editId] = information;
-        }
-
-        localStorage.setItem('userProfile', JSON.stringify(getData));
-        showInfo();
-        form.reset();
-    });
-</script>
+  </script>
 </body>
 </html>
