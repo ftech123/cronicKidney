@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Chronic kidney disease</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <!-- Add more navigation items if needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Side Navigation (Mobile) -->
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <!-- Add more navigation items if needed -->
+    </ul>
+
+    <div class="container">
+        <h2 class="center-align">Login</h2>
+        <div class="row">
+            <form class="col s12" id="loginForm">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" class="validate" value="user123">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate" value="user@1234">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Initialize Side Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+
+        // Add event listener to form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            // Retrieve username and password from form fields
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            // Perform authentication logic here (e.g., compare with database records)
+            // For demonstration, simply log the credentials
+            console.log('Username:', username);
+            console.log('Password:', password);
+            // Redirect user to dashboard.html after successful login
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Chronic Disease</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Logout</a></li>
+                <!-- Add more navigation items if needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Side Navigation (Mobile) -->
+    <ul class="sidenav" id="mobile-nav">
+        <br>
+        <li><a href="csv.html">View CSV</a></li>
+        <hr>
+        <li><a href="csv_ana.html">View CSV Analysis</a></li>
+        <hr>
+        <li><a href="ckd.html">Value</a></li>
+        <hr>
+        <li><a href="medicine.html">Add Medicine</a></li>
+        <hr>
+        <li><a href="view_med.html">View Medicine</a></li>
+        <hr>
+        <li><a href="login.html">Logout</a></li>
+        <!-- Add more navigation items if needed -->
+    </ul>
+
+    <div class="container">
+        <h2 class="center-align">Dashboard</h2>
+        <div class="row">
+            <div class="col s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Accuracy</span>
+                        <p>Accuracy is the ratio of correctly predicted observation to the total observations.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"><i class="material-icons">info</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">F1 Score</span>
+                        <p>F1 Score is the weighted average of Precision and Recall. It takes both false positives and false negatives into account.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"><i class="material-icons">info</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Recall</span>
+                        <p>Recall is the ratio of correctly predicted positive observations to the all observations in actual class.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"><i class="material-icons">info</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Precision</span>
+                        <p>Precision is the ratio of correctly predicted positive observations to the total predicted positive observations.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"><i class="material-icons">info</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Loss</span>
+                        <p>Loss is a number indicating how bad the model's prediction was on a single example.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"><i class="material-icons">info</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Initialize Side Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+</body>
+</html>

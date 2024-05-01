@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronic Disease Detection Report</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Chronic Disease</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Logout</a></li>
+                <!-- Add more navigation items if needed -->
+            </ul>
+        </div>
+    </nav>
+  
+   <!-- Side Navigation (Mobile) -->
+   <ul class="sidenav" id="mobile-demo">
+    <br>
+    <li><a href="csv.html">View CSV</a></li>
+    <hr>
+    <li><a href="csv_ana.html">View CSV Analysis</a></li>
+    <hr>
+    <li><a href="ckd.html">Value</a></li>
+    <hr>
+    <li><a href="medicine.html">Add Medicine</a></li>
+    <hr>
+    <li><a href="view_med.html">View Medicine</a></li>
+    <hr>
+    <li><a href="login.html">Logout</a></li>
+    <!-- Add more navigation items if needed -->
+</ul>
+  
+  <div class="container">
+    <a href="dashboard.html">Dashboard</a>
+    <h1>Chronic Disease Detection Report</h1>
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card-panel">
+          <h3>Patient Information</h3>
+          <p><strong>Name:</strong> John Doe</p>
+          <p><strong>Age:</strong> 45</p>
+          <p><strong>Gender:</strong> Male</p>
+          <p><strong>Medical History:</strong> Hypertension, Diabetes</p>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card-panel">
+          <h3>Result</h3>
+          <p><strong>Stage:</strong> Stage 2</p>
+          <p><strong>Doctor Recommendation:</strong> Regular check-ups and medication</p>
+          <p><strong>Medicine Recommendation:</strong> Prescribed medication X, Y, Z</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <h3>Health Trends</h3>
+        <canvas id="chart1"></canvas>
+      </div>
+      <div class="col s12 m6">
+        <h3>Model Evaluation</h3>
+        <canvas id="chart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample data for chart 1 (Blood Pressure)
+    const bloodPressureData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'Blood Pressure (mmHg)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+        data: [120, 130, 135, 140, 135, 130, 125]
+      }]
+    };
+
+    // Sample data for chart 2 (Model Evaluation)
+    const modelEvaluationData = {
+      labels: ['Accuracy', 'Recall', 'Precision', 'Loss', 'F1 Score'],
+      datasets: [{
+        label: 'Model Evaluation Metrics',
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
+        borderWidth: 1,
+        data: [0.85, 0.78, 0.82, 0.1, 0.80]
+      }]
+    };
+
+    // Options for both charts
+    const options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    };
+
+    // Initialize blood pressure chart
+    const ctx1 = document.getElementById('chart1').getContext('2d');
+    new Chart(ctx1, {
+      type: 'line',
+      data: bloodPressureData,
+      options: options
+    });
+
+    // Initialize model evaluation chart
+    const ctx2 = document.getElementById('chart2').getContext('2d');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: modelEvaluationData,
+      options: options
+    });
+  </script>
+  <script>
+    // Initialize Side Navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV File Reader</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Chronic Disease</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="dashboard.html">Dashboard</a></li>
+              <li><a href="login.html">Logout</a></li>
+              <!-- Add more navigation items if needed -->
+          </ul>
+      </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <br>
+    <li><a href="csv.html">View CSV</a></li>
+    <hr>
+    <li><a href="csv_ana.html">View CSV Analysis</a></li>
+    <hr>
+    <li><a href="ckd.html">Value</a></li>
+    <hr>
+    <li><a href="medicine.html">Add Medicine</a></li>
+    <hr>
+    <li><a href="view_med.html">View Medicine</a></li>
+    <hr>
+    <li><a href="login.html">Logout</a></li>
+    <!-- Add more navigation items if needed -->
+</ul>
+  <div class="container">
+    <h2>CSV File Reader</h2>
+    <div class="row">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Choose CSV File</span>
+          <input type="file" id="csvFileInput">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <table class="striped">
+        <thead>
+          <tr id="tableHeaders">
+            <!-- Table headers will be populated dynamically -->
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Table body will be populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    // Initialize Side Navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+</script>
+  <script>
+    $(document).ready(function(){
+      $('#csvFileInput').on('change', function(e){
+        var file = e.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.readAsText(file);
+          reader.onload = function(e){
+            var csv = e.target.result;
+            var lines = csv.split('\n');
+            var headers = lines[0].split(',');
+            var html = '';
+            var headerHtml = '';
+            $.each(headers, function(index, value){
+              headerHtml += '<th>' + value + '</th>';
+            });
+            $('#tableHeaders').html(headerHtml);
+            for (var i = 1; i < lines.length; i++) {
+              var row = lines[i].split(',');
+              html += '<tr>';
+              $.each(row, function(index, value){
+                html += '<td>' + value + '</td>';
+              });
+              html += '</tr>';
+            }
+            $('#tableBody').html(html);
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

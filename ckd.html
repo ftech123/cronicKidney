@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronic Kidney Disease Detection</title>
+       <!-- Materialize CSS -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+       <!-- Google Fonts -->
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Chronic Disease</a>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Logout</a></li>
+            <!-- Add more navigation items if needed -->
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <br>
+    <li><a href="csv.html">View CSV</a></li>
+    <hr>
+    <li><a href="csv_ana.html">View CSV Analysis</a></li>
+    <hr>
+    <li><a href="ckd.html">Value</a></li>
+    <hr>
+    <li><a href="medicine.html">Add Medicine</a></li>
+    <hr>
+    <li><a href="view_med.html">View Medicine</a></li>
+    <hr>
+    <li><a href="login.html">Logout</a></li>
+    <!-- Add more navigation items if needed -->
+</ul>
+
+    <div class="container"><br><br>
+        <a href="csv_ana.html" class="waves-effect">Analysis CSV</a><br>
+        <a href="dashboard.html" class="waves-effect">Dashboard</a>
+
+    <a href="dashboard.html">Dashboard</a>
+        <h2 class="center-align">Chronic Kidney Disease Detection</h2>
+        <form id="ckdForm" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="age" type="number" class="validate">
+                    <label for="age">Age</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="blood_pressure" type="number" class="validate">
+                    <label for="blood_pressure">Blood Pressure (mm/Hg)</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="specific_gravity" type="number" class="validate">
+                    <label for="specific_gravity">Specific Gravity</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="albumin" type="number" class="validate">
+                    <label for="albumin">Albumin (g/dL)</label>
+                </div>
+                <!-- Add more input fields for other relevant data -->
+            </div>
+            <div class="row center-align">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Detect CKD
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+        <div id="result" class="center-align"></div>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ckdForm = document.getElementById('ckdForm');
+            ckdForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+    
+                // Get form data
+                var age = parseFloat(document.getElementById('age').value);
+                var bloodPressure = parseFloat(document.getElementById('blood_pressure').value);
+                var specificGravity = parseFloat(document.getElementById('specific_gravity').value);
+                var albumin = parseFloat(document.getElementById('albumin').value);
+    
+                // Example detection logic (replace with your actual detection algorithm)
+                var ckdDetected = detectCKD(age, bloodPressure, specificGravity, albumin);
+    
+                // Redirect to result.html
+                if (ckdDetected) {
+                    window.location.href = 'result.html?result=detected';
+                } else {
+                    window.location.href = 'result.html?result=not_detected';
+                }
+            });
+        });
+    
+        // Example detection function (replace with your actual detection algorithm)
+        function detectCKD(age, bloodPressure, specificGravity, albumin) {
+            // Example: Simple detection based on age and albumin levels
+            if (age > 60 && albumin > 3.5) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+    
+</body>
+</html>

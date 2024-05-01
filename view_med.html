@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Medicines</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Medicine List</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- <ul class="sidenav" id="mobile-demo">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul> -->
+  <ul class="sidenav" id="mobile-demo">
+    <br>
+    <li><a href="csv.html">View CSV</a></li>
+    <hr>
+    <li><a href="csv_ana.html">View CSV Analysis</a></li>
+    <hr>
+    <li><a href="ckd.html">Value</a></li>
+    <hr>
+    <li><a href="medicine.html">Add Medicine</a></li>
+    <hr>
+    <li><a href="view_med.html">View Medicine</a></li>
+    <hr>
+    <li><a href="login.html">Logout</a></li>
+    <!-- Add more navigation items if needed -->
+</ul>
+
+  <div class="container">
+    <h1 class="center-align">View Medicines</h1>
+    <ul class="collection with-header">
+      <li class="collection-header"><h4>Medicine List</h4></li>
+      <li class="collection-item">Paracetamol - 500mg - Morning</li>
+      <li class="collection-item">Aspirin - 75mg - Afternoon</li>
+      <li class="collection-item">Ibuprofen - 200mg - Night</li>
+    </ul>
+  </div>
+
+  <!-- Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    });
+  </script>
+</body>
+</html>

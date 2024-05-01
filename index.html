@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronic Disease</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .splash-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+    }
+    .splash-description {
+      font-size: 18px;
+      color: #666;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row center-align">
+      <div class="col s12">
+        <h2 class="splash-title">Chronic Disease </h2>
+        <p class="splash-description">Analyzing patient data for detection</p>
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    // Redirect to indexmain.html after 3 seconds
+    setTimeout(function() {
+      window.location.href = 'indexmain.html';
+    }, 3000);
+  </script>
+</body>
+</html>
